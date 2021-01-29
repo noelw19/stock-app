@@ -1,0 +1,17 @@
+.container {
+    padding: .5rem 0 .5rem 0;
+    width: auto;
+    margin-left: 1rem;
+}
+
+.content {
+    background-color: white;
+    width: auto;
+    padding: 1rem;
+}
+
+.header {
+    text-decoration: underline;
+    margin-bottom: 0;
+    width: 100%;
+}
