@@ -127,7 +127,17 @@ class Stock extends React.Component {
         getMaxVal(stockPrices);
         getMinVal(stockPrices);
 
+        const graphPlot = [{
+                x: this.state.stockChartXValues,
+                y: this.state.stockChartYValues,
+                type: 'scatter',
+                mode: 'lines+markers',
+                marker: {color: 'red'}
+        }];
 
+        const layout = {title: 'Past 100 Days'};
+
+        const graphConfig = {responsive: true};
 
         return (
             <div>
@@ -136,17 +146,11 @@ class Stock extends React.Component {
                 {this.state.isLoading && <Loader type='bubbles' color='#ffff' />}
                 {!this.state.isLoading && <div className={style.data}>
                 <Plot
-                    data={[
-                    {
-                        x: this.state.stockChartXValues,
-                        y: this.state.stockChartYValues,
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
+                    data={
+                    graphPlot
                     }
-                    ]}
-                    layout={ {width: 620, height: 440, title: 'Past 100 Days'}}
-                    config={{responsive: true}}
+                    layout={layout}
+                    config={graphConfig}
                 />
                 <Info 
                     name={name}
