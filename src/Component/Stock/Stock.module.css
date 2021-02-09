@@ -16,7 +16,7 @@ h2 {
 
 @media (max-width: 980px) {
     .data {
-        width:80%;
+        width:100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
