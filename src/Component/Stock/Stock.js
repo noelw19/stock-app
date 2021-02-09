@@ -3,7 +3,7 @@ import React from 'react';
 
 import Loader from '../ReactLoading/ReactLoading';
 
-import style from './Stock.module.css';
+import styles from './Stock.module.css';
 
 import Info from '../Info/Info.js';
 
@@ -135,29 +135,32 @@ class Stock extends React.Component {
                 marker: {color: 'red'}
         }];
 
-        const layout = {title: 'Past 100 Days'};
+        const layout = {title: 'Past 100 Days', autosize: true};
 
-        const graphConfig = {responsive: true};
+        const config = {useResizeHandler: true, responsive: true};
+
+        const style = {width: "100%", height: "100%"};
 
         return (
             <div>
                 <h2>Stock Tracker</h2>
                 <h3>Current Stock: {this.state.stockType}</h3>
                 {this.state.isLoading && <Loader type='bubbles' color='#ffff' />}
-                {!this.state.isLoading && <div className={style.data}>
+                {!this.state.isLoading && <div className={styles.data}>
                 <Plot
                     data={
                     graphPlot
                     }
                     layout={layout}
-                    config={graphConfig}
+                    style={style}
+                    config={config}
                 />
                 <Info 
                     name={name}
                     highValues={highVal}
                     lowValues={lowVal}/>
                 </div>}
-                <div className={style.buttons}>
+                <div className={styles.buttons}>
                     <button onClick={this.teslaView}>Tesla</button>
                     <button onClick={this.amazonView}>Amazon</button>
                     <button onClick={this.itroView}>ITRO</button>
