@@ -1,6 +1,8 @@
 import Plot from 'react-plotly.js';
 import React from 'react';
 
+import Loader from '../ReactLoading/ReactLoading';
+
 import style from './Stock.module.css';
 
 import Info from '../Info/Info.js';
@@ -13,7 +15,7 @@ class Stock extends React.Component {
             stockChartYValues: [],
             stockSymbol: 'TSLA',
             stockType: 'Tesla',
-            high: ''
+            isLoading: true
 
         }
     }
@@ -33,7 +35,11 @@ class Stock extends React.Component {
 
         fetch(API_CALL)
             .then(
+                
                 function(response) {
+                    pointerToThis.setState({
+                        isLoading: true
+                    })
                     return response.json();
                 }
             )
@@ -49,7 +55,8 @@ class Stock extends React.Component {
                     // console.log(stockChartXValuesFunction)
                     pointerToThis.setState({
                         stockChartXValues: stockChartXValuesFunction,
-                        stockChartYValues: stockChartYValuesFunction
+                        stockChartYValues: stockChartYValuesFunction,
+                        isLoading: false
                     })
                 }
             )
@@ -59,7 +66,8 @@ class Stock extends React.Component {
         const pointerToThis = this;
         pointerToThis.setState({
             stockSymbol: 'TSLA',
-            stockType: 'Tesla'
+            stockType: 'Tesla',
+            isLoading: true
         }) 
         this.fetchStock()
     }
@@ -68,7 +76,8 @@ class Stock extends React.Component {
         const pointerToThis = this;
         pointerToThis.setState({
             stockSymbol: 'AMZN',
-            stockType: 'Amazon'
+            stockType: 'Amazon',
+            isLoading: true
         })
         this.fetchStock()
     }
@@ -77,7 +86,8 @@ class Stock extends React.Component {
         const pointerToThis = this;
         pointerToThis.setState({
             stockSymbol: 'ITRO',
-            stockType: 'Itronics Inc'
+            stockType: 'Itronics Inc',
+            isLoading: true
         })
         this.fetchStock()
     }
@@ -86,7 +96,8 @@ class Stock extends React.Component {
         const pointerToThis = this;
         pointerToThis.setState({
             stockSymbol: 'GME',
-            stockType: 'Gamestop (EB Games)'
+            stockType: 'Gamestop (EB Games)',
+            isLoading: true
         })
         this.fetchStock()
     }
@@ -122,7 +133,8 @@ class Stock extends React.Component {
             <div>
                 <h2>Stock Tracker</h2>
                 <h3>Current Stock: {this.state.stockType}</h3>
-                <div className={style.data}>
+                {this.state.isLoading && <Loader type='bubbles' color='#ffff' />}
+                {!this.state.isLoading && <div className={style.data}>
                 <Plot
                     data={[
                     {
@@ -139,7 +151,7 @@ class Stock extends React.Component {
                     name={name}
                     highValues={highVal}
                     lowValues={lowVal}/>
-                </div>
+                </div>}
                 <div className={style.buttons}>
                     <button onClick={this.teslaView}>Tesla</button>
                     <button onClick={this.amazonView}>Amazon</button>
