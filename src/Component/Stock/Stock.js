@@ -145,7 +145,7 @@ class Stock extends React.Component {
                         marker: {color: 'red'},
                     }
                     ]}
-                    layout={ {width: 720, height: 440, title: 'Past 100 Days'} }
+                    layout={ {width: 620, height: 440, title: 'Past 100 Days'} }
                 />
                 <Info 
                     name={name}
