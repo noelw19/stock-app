@@ -1,10 +1,40 @@
 h2 {
     margin-bottom: 0px;
+
+}
+
+h3 {
+  color: #64766A;
 }
 
 .buttons {
+    width: 80%;
+
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonCont {
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 8rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    background-color: #C0A9BD;;
+
+}
+
+button:hover {
+    color: white;
+    background-color: lightcoral;
 }
 
 .data {

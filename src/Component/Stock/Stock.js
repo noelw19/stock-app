@@ -68,8 +68,7 @@ class Stock extends React.Component {
             stockSymbol: 'TSLA',
             stockType: 'Tesla',
             isLoading: true
-        }) 
-        this.fetchStock()
+        }, () => this.fetchStock() )
     }
 
     amazonView = () => {
@@ -78,8 +77,7 @@ class Stock extends React.Component {
             stockSymbol: 'AMZN',
             stockType: 'Amazon',
             isLoading: true
-        })
-        this.fetchStock()
+        }, () => this.fetchStock())
     }
 
     itroView = () => {
@@ -88,8 +86,8 @@ class Stock extends React.Component {
             stockSymbol: 'ITRO',
             stockType: 'Itronics Inc',
             isLoading: true
-        })
-        this.fetchStock()
+        }, () => this.fetchStock())
+        
     }
 
     gmeView = () => {
@@ -98,8 +96,7 @@ class Stock extends React.Component {
             stockSymbol: 'GME',
             stockType: 'Gamestop (EB Games)',
             isLoading: true
-        })
-        this.fetchStock()
+        }, () => this.fetchStock())
     }
 
     render() {
@@ -139,7 +136,7 @@ class Stock extends React.Component {
 
         const config = {useResizeHandler: true, responsive: true};
 
-        const style = {width: "100%", height: "100%"};
+        const style = {width: "50%", height: "50%"};
 
         return (
             <div>
@@ -160,11 +157,13 @@ class Stock extends React.Component {
                     highValues={highVal}
                     lowValues={lowVal}/>
                 </div>}
-                <div className={styles.buttons}>
-                    <button onClick={this.teslaView}>Tesla</button>
-                    <button onClick={this.amazonView}>Amazon</button>
-                    <button onClick={this.itroView}>ITRO</button>
-                    <button onClick={this.gmeView}>Game Stop</button>
+                <div className={styles.buttonCont}>
+                    <div className={styles.buttons}>
+                        <button onClick={this.teslaView}>Tesla</button>
+                        <button onClick={this.amazonView}>Amazon</button>
+                        <button onClick={this.itroView}>ITRO</button>
+                        <button onClick={this.gmeView}>Game Stop</button>
+                    </div>
                 </div>
             </div>
         )
