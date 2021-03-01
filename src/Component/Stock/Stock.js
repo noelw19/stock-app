@@ -136,10 +136,10 @@ class Stock extends React.Component {
 
         const config = {useResizeHandler: true, responsive: true};
 
-        const style = {width: "50%", height: "50%"};
+        const style = {width: "50%", height: "30%"};
 
         return (
-            <div>
+            <div className={styles.container}> 
                 <h2>Stock Tracker</h2>
                 <h3>Current Stock: {this.state.stockType}</h3>
                 {this.state.isLoading && <Loader type='bubbles' color='#ffff' />}
